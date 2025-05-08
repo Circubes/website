@@ -9,18 +9,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
     <style>
+        /* Variables */
         :root {
-            --color-black: #000000;
             --color-white: #ffffff;
-            --color-red: #cf2e2e;
             --color-blue: #0693e3;
-            --color-purple: #9b51e0;
-            --gradient-cyan-purple: linear-gradient(135deg,
-                    rgba(6, 147, 227, 1) 0%,
-                    rgb(155, 81, 224) 100%);
             --font-poppins: "Poppins", sans-serif;
         }
 
+        /* Base styles */
         body {
             font-family: var(--font-poppins);
             margin: 0;
@@ -31,6 +27,7 @@
             scroll-behavior: smooth;
         }
 
+        /* Header styles */
         header {
             background: var(--color-white);
             color: #2b2d42;
@@ -38,18 +35,12 @@
             text-align: center;
         }
 
-        .logo {
-            width: 60px;
-            height: auto;
-            display: block;
-            margin: 0 auto 1rem;
-        }
-
         header h1 {
             margin: 0;
             font-size: 2rem;
         }
 
+        /* Navigation styles */
         nav {
             text-align: center;
             margin-top: 3rem;
@@ -62,6 +53,7 @@
             font-weight: 600;
         }
 
+        /* CTA Button styles */
         .cta-buttons {
             display: flex;
             justify-content: center;
@@ -78,17 +70,13 @@
             text-decoration: none;
         }
 
-        .primary {
-            background-color: var(--color-blue);
-            color: white;
-        }
-
         .outline {
             border: 2px solid var(--color-blue);
             color: var(--color-blue);
             background-color: white;
         }
 
+        /* Section styles */
         section {
             margin: 2rem auto;
             padding: 1rem;
@@ -99,17 +87,7 @@
             color: #2b2d42;
         }
 
-        .downloads a {
-            display: inline-block;
-            margin: 0.5rem 1rem 0.5rem 0;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--color-red);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-        }
-
+        /* Content styles */
         .tagline {
             text-align: center;
             font-size: 1.2rem;
@@ -122,8 +100,11 @@
             margin: 2rem auto;
             max-width: 100%;
             height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
         }
 
+        /* Footer styles */
         footer {
             text-align: center;
             padding: 2rem 1rem;
@@ -131,21 +112,44 @@
             background-color: #edf2f4;
             color: #555;
         }
+
+        /* Custom styles */
+        .header-logo {
+            margin-top: 100px;
+        }
+
+        .main-heading {
+            font-size: 60px;
+            line-height: 1.2;
+            margin-top: 100px;
+        }
+
+        .sub-heading {
+            font-size: 18px;
+            font-weight: 400;
+            margin-top: 1rem;
+        }
+
+        .section-heading-blue {
+            color: #007ECC;
+        }
+
+        .section-heading-red {
+            color: #E70019;
+        }
+
+        .section-heading-yellow {
+            color: #FFBB05;
+        }
     </style>
 </head>
 
 <body>
     <div style="max-width: 1170px; margin: 0 auto">
         <header>
-       
-                <img src="logo_full_size.png" width="500" alt="Circubes Light Detector"  />
-            <h1 style="font-size: 60px;line-height: 1.2, margin: top 22px;margin-top: 4rem;">
-                Learn the Essentials of Computers and Electronics with Circubes®
-            </h1>
-            <p style="font-size: 18px; font-weight: 400; margin-top: 1rem">
-                Build Electronic Circuits without Breadboards or Soldering and Unlock
-                Endless Possibilities!
-            </p>
+            <img src="logo_full_size.png" width="300" alt="Circubes Light Detector" class="header-logo">
+            <h1 class="main-heading">Learn the Essentials of Computers and Electronics with Circubes®</h1>
+            <p class="sub-heading">Build Electronic Circuits without Breadboards or Soldering and Unlock Endless Possibilities!</p>
             <nav>
                 <a href="#about">Circubes</a>
                 <a href="#product">Product</a>
@@ -155,12 +159,12 @@
             </nav>
         </header>
 
- 
         <section class="cta-buttons">
             <a href="mailto:info@circubes.com" class="outline">🛒 Pre-Order Now</a>
         </section>
+
         <section id="about">
-            <h2>About Circubes</h2>
+            <h2 class="section-heading-blue">About Circubes</h2>
             <p>
                 Circubes is a magnetic, modular kit that makes learning electronics
                 intuitive and fun. Build real circuits without wires or soldering —
@@ -168,68 +172,42 @@
                 it's the perfect tool for kids, educators, and hobbyists to explore
                 STEM hands-on.
             </p>
-
-
             <img src="p1.png" width="500" alt="Circubes Light Detector" class="featured-image" />
             It is the fundamental building block of the idea of Circubes®.
-    
-    </section>
+        </section>
 
-    <section style="text-align: center">
-        <h1 style="font-size: 60px; line-height: 1.2">
-            What Makes Circubes Different
-        </h1>
-        <p style="font-size: 18px; font-weight: 400; margin-top: 1rem">
-            Snap-together cubes make circuit building clean, visual, and intuitive—no wires, no mess.
-        </p>
-        <img src="2cubes.gif" alt="Circubes Light Detector" class="featured-image" />
-        <div class="tagline">
-    </section>
+        <section style="text-align: center">
+            <h1 class="main-heading section-heading-red">What Makes Circubes Different</h1>
+            <p class="sub-heading">Snap-together cubes make circuit building clean, visual, and intuitive—no wires, no mess.</p>
+            <img src="2cubes.gif" alt="Circubes Light Detector" class="featured-image" />
+            <div class="tagline"></div>
+        </section>
 
-    <section style="text-align: center">
-        <h1 style="font-size: 60px; line-height: 1.2">
-            Real Components. Real Learning.
-        </h1>
-        <p style="font-size: 18px; font-weight: 400; margin-top: 1rem">
-            Each cube contains a real electronic component, giving learners a true hands-on experience.
-        </p>
-        <img src="p2.png" width="600" alt="Circubes Light Detector" class="featured-image" />
-    </section>
-    <!-- <section id="downloads" >
-        <h2>Downloads</h2>
-        <div class="downloads">
-            <a href="#" download>Download Full Manual (PDF)</a>
-            <a href="#" download>Project Sample Pack</a>
-        </div>
-    </section> -->
+        <section style="text-align: center">
+            <h1 class="main-heading section-heading-blue">Real Components. Real Learning.</h1>
+            <p class="sub-heading">Each cube contains a real electronic component, giving learners a true hands-on experience.</p>
+            <img src="p2.png" width="600" alt="Circubes Light Detector" class="featured-image" />
+        </section>
 
-    <section style="text-align: center">
-        <h1 style="font-size: 60px; line-height: 1.2">
-            From Curiosity to Creativity
-        </h1>
-        <p style="font-size: 18px; font-weight: 400; margin-top: 1rem">
-            With over 100 projects and open-ended play, Circubes grows with your skills and imagination.
-        </p>
-    </section>
+        <section style="text-align: center">
+            <h1 class="main-heading section-heading-yellow">From Curiosity to Creativity</h1>
+            <p class="sub-heading">With over 100 projects and open-ended play, Circubes grows with your skills and imagination.</p>
+        </section>
 
-    <section style="text-align: center">
-        <h1 style="font-size: 60px; line-height: 1.2">
-            Built for Classrooms and Living Rooms
-        </h1>
-        <p style="font-size: 18px; font-weight: 400; margin-top: 1rem">
-            Whether you're a parent, teacher, or tinkerer—Circubes fits right in.
-        </p>
-        <img src="p3.png" width="500" alt="Circubes Light Detector" class="featured-image" />
-    </section>
-    <section id="contact" style="text-align: center">
-        <h2>Contact</h2>
-        <p>
-            Have questions or want to partner with us? Reach out at
-            <a href="mailto:info@circubes.com">info@circubes.com</a>
-        </p>
-        <img src="logo_600.png"   alt="Circubes Light Detector" width="100" />
-    </section> 
+        <section style="text-align: center">
+            <h1 class="main-heading section-heading-red">Built for Classrooms and Living Rooms</h1>
+            <p class="sub-heading">Whether you're a parent, teacher, or tinkerer—Circubes fits right in.</p>
+            <img src="p3.png" width="500" alt="Circubes Light Detector" class="featured-image" />
+        </section>
 
+        <section id="contact" style="text-align: center">
+            <h2 class="section-heading-blue">Contact</h2>
+            <p>
+                Have questions or want to partner with us? Reach out at
+                <a href="mailto:info@circubes.com">info@circubes.com</a>
+            </p>
+            <img src="logo_600.png" alt="Circubes Light Detector" width="100" />
+        </section>
     </div>
     <footer>&copy; 2025 Circubes. All rights reserved.</footer>
 </body>
