@@ -213,6 +213,30 @@
         </section>
     </div>
     <footer>&copy; 2025 Circubes. All rights reserved.</footer>
+
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBNBEtOYZRJAmiLiCK-nIpiHN-g6RboDgg",
+    authDomain: "circubes-com.firebaseapp.com",
+    projectId: "circubes-com",
+    storageBucket: "circubes-com.firebasestorage.app",
+    messagingSenderId: "259395027197",
+    appId: "1:259395027197:web:1aa814117cbd31df367e94",
+    measurementId: "G-889BNYBK7F"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 </body>
 
 </html>
