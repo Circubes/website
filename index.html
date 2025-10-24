@@ -4,218 +4,787 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Circubes – Learn Electronics the Fun Way</title>
+    <meta name="description" content="Circubes – Modular Electronics Learning Kit. Build circuits without wires or soldering. Perfect for STEM education, schools, and makers." />
+    <title>Circubes – Build Circuits. Build Understanding.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" /> 
-<link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
     <style>
         /* Variables */
         :root {
+            --color-primary: #0693e3;
+            --color-secondary: #FF6B6B;
+            --color-accent: #FFD93D;
+            --color-success: #51CF66;
+            --color-dark: #2b2d42;
+            --color-light: #f8f9fa;
             --color-white: #ffffff;
-            --color-blue: #0693e3;
-            --font-poppins: "Fredoka", sans-serif;
+            --font-main: "Fredoka", sans-serif;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
         }
 
         /* Base styles */
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: var(--font-poppins);
+            font-family: var(--font-main);
             margin: 0;
             padding: 0;
-            background-color: #fff;
-            color: #333;
-            line-height: 1.6;
+            background-color: var(--color-white);
+            color: var(--color-dark);
+            line-height: 1.7;
             scroll-behavior: smooth;
-            font-weight: 100;
-        }
-
-        /* Header styles */
-        header {
-            background: var(--color-white);
-            color: #2b2d42;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-        }
-
-        /* Navigation styles */
-        nav {
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        nav a {
-            margin: 0 1rem;
-            text-decoration: none;
-            color: #2b2d42;
             font-weight: 400;
         }
 
-        /* CTA Button styles */
+        /* Navigation Bar */
+        .navbar {
+            background: var(--color-white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar-logo {
+            height: 50px;
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .navbar-menu a {
+            text-decoration: none;
+            color: var(--color-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .navbar-menu a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--color-white);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="3" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-logo {
+            max-width: 350px;
+            margin: 0 auto 2rem;
+            filter: brightness(0) invert(1);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
+            margin: 0 0 1rem 0;
+            line-height: 1.2;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            font-weight: 400;
+            margin: 0 0 2rem 0;
+            opacity: 0.95;
+        }
+
+        .hero-video {
+            max-width: 900px;
+            margin: 3rem auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-video iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+
+        /* CTA Buttons */
         .cta-buttons {
             display: flex;
             justify-content: center;
-            align-items: center;
+            gap: 1rem;
             margin: 2rem 0;
+            flex-wrap: wrap;
         }
 
-        .cta-buttons a {
+        .btn {
             display: inline-block;
-            margin: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: 5px;
-            font-weight: 500;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
             text-decoration: none;
-            
+            transition: var(--transition);
+            font-size: 1.1rem;
+            cursor: pointer;
+            border: none;
         }
 
-        .outline {
-            border: 2px solid var(--color-blue);
-            color: var(--color-blue);
-            background-color: #007ecc0d;
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+            box-shadow: var(--shadow-md);
         }
 
-        /* Section styles */
+        .btn-primary:hover {
+            background: #0577c5;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--color-white);
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: var(--color-white);
+            transform: translateY(-2px);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styles */
         section {
-            margin: 2rem auto;
-            padding: 1rem;
-            scroll-margin-top: 2rem;
+            padding: 5rem 2rem;
+            scroll-margin-top: 80px;
         }
 
-        h2 {
-            color: #2b2d42;
+        .section-alt {
+            background: var(--color-light);
         }
 
-        /* Content styles */
-        .tagline {
+        .section-heading {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            margin: 0 0 1rem 0;
             text-align: center;
-            font-size: 1.2rem;
-            font-weight: 400;
-            margin-top: 2rem;
+            color: var(--color-dark);
         }
 
+        .section-subheading {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            text-align: center;
+            color: #666;
+            margin: 0 auto 3rem;
+            max-width: 700px;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin: 0 0 1rem 0;
+            color: var(--color-dark);
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Image Styles */
         .featured-image {
-            display: block;
-            margin: 2rem auto;
             max-width: 100%;
             height: auto;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            margin: 2rem auto;
+            display: block;
+        }
+
+        /* Kit Contents */
+        .kit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .kit-item {
+            background: var(--color-white);
+            padding: 1.5rem;
             border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Footer styles */
-        footer {
+            box-shadow: var(--shadow-sm);
             text-align: center;
-            padding: 2rem 1rem;
-            font-size: 0.9rem;
-            background-color: #edf2f4;
-            color: #555;
+            transition: var(--transition);
         }
 
-        /* Custom styles */
-        .header-logo {
-            margin-top: 100px;
+        .kit-item:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
         }
 
-        .main-heading {
-            font-size: 60px;
-            line-height: 1.2;
-            margin-top: 100px;
+        .kit-item-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .kit-item-name {
+            font-weight: 600;
+            color: var(--color-dark);
+        }
+
+        /* Benefits List */
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .benefit-icon {
+            font-size: 1.5rem;
+            color: var(--color-success);
+            flex-shrink: 0;
+        }
+
+        .benefit-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Target Audience */
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .audience-card {
+            background: linear-gradient(135deg, var(--color-primary), #764ba2);
+            color: var(--color-white);
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .audience-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .audience-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .audience-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        /* Testimonial */
+        .testimonial {
+            background: var(--color-white);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            margin: 3rem auto;
+            max-width: 900px;
+            border-left: 5px solid var(--color-primary);
+        }
+
+        .testimonial-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--color-dark);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--color-dark);
+        }
+
+        .testimonial-title {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact-card {
+            background: linear-gradient(135deg, var(--color-primary), #764ba2);
+            color: var(--color-white);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: var(--color-white);
+            text-decoration: none;
             font-weight: 500;
+            transition: var(--transition);
         }
 
-        .sub-heading {
-            font-size: 18px;
-            font-weight: 400;
-            margin-top: 1rem;
+        .contact-info a:hover {
+            opacity: 0.8;
         }
 
-        .section-heading-blue {
-            color: #333;
+        /* Footer */
+        footer {
+            background: var(--color-dark);
+            color: var(--color-white);
+            padding: 3rem 2rem 1rem;
+            text-align: center;
         }
 
-        .section-heading-red {
-            color: #333;
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .section-heading-yellow {
-            color: #333;
+        .footer-logo {
+            max-width: 120px;
+            margin: 0 auto 2rem;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--color-white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            margin-top: 2rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .navbar-menu {
+                gap: 1rem;
+            }
+
+            .hero-video iframe {
+                height: 300px;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .testimonial {
+                padding: 2rem 1.5rem;
+            }
+
+            .testimonial-text {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div style="max-width: 1170px; margin: 0 auto">
-        <header>
-            <img src="logo_full_size.png" width="300" alt="Circubes Light Detector" class="header-logo">
-            <h1 class="main-heading">Learn the Essentials of Computers and Electronics with Circubes®</h1>
-            <p class="sub-heading">Build Electronic Circuits without Breadboards or Soldering and Unlock Endless Possibilities!</p>
-            <!-- <nav>
-                <a href="#about">Circubes</a>
-                <a href="#product">Product</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <img src="logo_full_size.png" alt="Circubes Logo" class="navbar-logo">
+            <div class="navbar-menu">
+                <a href="#about">About</a>
                 <a href="#features">Features</a>
+                <a href="#kit">The Kit</a>
+                <a href="#education">Education</a>
+                <a href="#audience">Who It's For</a>
+                <a href="#testimonials">Testimonials</a>
                 <a href="#contact">Contact</a>
-                <a href="#lessons">Lessons</a>
-            </nav> -->
-            <iframe width="100%" height="600" src="https://www.youtube.com/embed/g3Nqts4KpuI?si=lPuFWD-bBHJeebii" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-     
-        </header>
+            </div>
+        </div>
+    </nav>
 
-        <section class="cta-buttons">
-            <a href="mailto:info@circubes.com" class="outline">🛒 Pre-Order Now</a>
-        </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="logo_full_size.png" alt="Circubes Logo" class="hero-logo">
+            <h1>Build Circuits. Build Understanding.</h1>
+            <p class="hero-tagline">Electronics Made Simple, Fun, and Hands-On</p>
+            <div class="cta-buttons">
+                <a href="mailto:info@eitan-meir.de" class="btn btn-primary">🛒 Pre-Order Now</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+            <div class="hero-video">
+                <iframe src="https://www.youtube.com/embed/g3Nqts4KpuI?si=lPuFWD-bBHJeebii" title="Circubes Demo Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
 
-        <section id="about">
-            <h2 class="section-heading-blue" style="font-weight: 400;">About Circubes</h2>
-            <p>
-                Circubes is a magnetic, modular kit that makes learning electronics
-                intuitive and fun. Build real circuits without wires or soldering —
-                just snap and learn. With over 100 projects and a full-color manual,
-                it's the perfect tool for kids, educators, and hobbyists to explore
-                STEM hands-on.
+    <!-- What is Circubes -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-heading">What is Circubes?</h2>
+            <p class="section-subheading">A hands-on electronics learning kit made of magnetic cubes. Each cube contains a real electronic component that snaps together to form complete working circuits.</p>
+            <img src="p1.png" alt="Circubes Modular Electronics Kit" class="featured-image" />
+            <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 2rem auto; line-height: 1.8;">
+                Designed for learners of any age or educational background, Circubes removes the complexity of wires, breadboards, and soldering, making electronics education <strong>safe, intuitive, and fun</strong>.
             </p>
-            
-            <img src="p1.png" width="600" alt="Circubes Light Detector" class="featured-image" />
-              </section>
+        </div>
+    </section>
 
-        <section style="text-align: center">
-            <h1 class="main-heading section-heading-red">What Makes Circubes Different</h1>
-            <p class="sub-heading">Snap-together cubes make circuit building clean, visual, and intuitive—no wires, no mess.</p>
-            <img src="2cubes.gif" alt="Circubes Light Detector" class="featured-image" />
-            <div class="tagline"></div>
-        </section>
+    <!-- Key Features -->
+    <section id="features" class="section-alt">
+        <div class="container">
+            <h2 class="section-heading">Why Circubes is Different</h2>
+            <p class="section-subheading">Real components, magnetic design, and endless learning possibilities</p>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🧲</div>
+                    <h3>Magnetic Design</h3>
+                    <p>Snap together instantly — no wires, breadboards, or soldering needed. Clean, visual, and mess-free.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Real Components</h3>
+                    <p>Each cube contains actual electronic parts: LEDs, motors, transistors, sensors, and more.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Color-Coded</h3>
+                    <p>Intuitive color system with polarity markers makes circuit building simple and error-free.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Works Out of the Box</h3>
+                    <p>No programming or setup required. Start building circuits immediately.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧪</div>
+                    <h3>100+ Projects</h3>
+                    <p>From simple LED circuits to complex systems. Grows with your skills and imagination.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>Safe & Certified</h3>
+                    <p>CE and EN71 compliant, child-safe design for worry-free learning.</p>
+                </div>
+            </div>
+            <img src="2cubes.gif" alt="Circubes Magnetic Connection" class="featured-image" style="max-width: 600px;" />
+        </div>
+    </section>
 
-        <section style="text-align: center">
-            <h1 class="main-heading section-heading-blue">Real Components. Real Learning.</h1>
-            <p class="sub-heading">Each cube contains a real electronic component, giving learners a true hands-on experience.</p>
-            <img src="p2.png" width="600" alt="Circubes Light Detector" class="featured-image" />
-        </section>
-
-        <section style="text-align: center">
-            <h1 class="main-heading section-heading-yellow">From Curiosity to Creativity</h1>
-            <p class="sub-heading">With over 100 projects and open-ended play, Circubes grows with your skills and imagination.</p>
-        </section>
-
-        <section style="text-align: center">
-            <h1 class="main-heading section-heading-red">Built for Classrooms and Living Rooms</h1>
-            <p class="sub-heading">Whether you're a parent, teacher, or tinkerer—Circubes fits right in.</p>
-            <img src="p3.png" width="500" alt="Circubes Light Detector" class="featured-image" />
-        </section>
-
-        <section id="contact" style="text-align: center">
-            <h2 class="section-heading-blue" style="font-weight: 400;">Contact</h2>
-            <p>
-                Have questions or want to partner with us? Reach out at
-                <a href="mailto:info@circubes.com">info@circubes.com</a>
+    <!-- What's in the Kit -->
+    <section id="kit">
+        <div class="container">
+            <h2 class="section-heading">What's in the Essentials Set</h2>
+            <p class="section-subheading">12 modular cubes with real electronic components</p>
+            <div class="kit-grid">
+                <div class="kit-item">
+                    <div class="kit-item-icon">🔋</div>
+                    <div class="kit-item-name">Battery Cube</div>
+                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">3V Power</p>
+                </div>
+                <div class="kit-item">
+                    <div class="kit-item-icon">💡</div>
+                    <div class="kit-item-name">LED Cube</div>
+                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Light Emitter</p>
+                </div>
+                <div class="kit-item">
+                    <div class="kit-item-icon">🔄</div>
+                    <div class="kit-item-name">Motor Cube</div>
+                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Rotation Power</p>
+                </div>
+                <div class="kit-item">
+                    <div class="kit-item-icon">🔌</div>
+                    <div class="kit-item-name">Transistor Cube</div>
+                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Electronic Switch</p>
+                </div>
+                <div class="kit-item">
+                    <div class="kit-item-icon">🎵</div>
+                    <div class="kit-item-name">Melody Chip Cube</div>
+                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Musical Output</p>
+                </div>
+                <div class="kit-item">
+                    <div class="kit-item-icon">🔘</div>
+                    <div class="kit-item-name">Switch Cube</div>
+                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">On/Off Control</p>
+                </div>
+                <div class="kit-item">
+                    <div class="kit-item-icon">⏺️</div>
+                    <div class="kit-item-name">Button Cube</div>
+                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Press Input</p>
+                </div>
+                <div class="kit-item">
+                    <div class="kit-item-icon">☀️</div>
+                    <div class="kit-item-name">Photoresistor Cube</div>
+                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Light Sensor</p>
+                </div>
+                <div class="kit-item">
+                    <div class="kit-item-icon">🎚️</div>
+                    <div class="kit-item-name">Potentiometer Cube</div>
+                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Variable Resistor</p>
+                </div>
+                <div class="kit-item">
+                    <div class="kit-item-icon">⚡</div>
+                    <div class="kit-item-name">Resistor Cube</div>
+                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">1kΩ</p>
+                </div>
+                <div class="kit-item">
+                    <div class="kit-item-icon">🔋</div>
+                    <div class="kit-item-name">Capacitor Cube</div>
+                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">1000μF</p>
+                </div>
+                <div class="kit-item">
+                    <div class="kit-item-icon">🔊</div>
+                    <div class="kit-item-name">Buzzer Cube</div>
+                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Sound Output</p>
+                </div>
+            </div>
+            <img src="p2.png" alt="Circubes Components" class="featured-image" style="max-width: 700px;" />
+            <p style="text-align: center; font-size: 1.1rem; margin-top: 2rem;">
+                Each set includes a <strong>full-color manual</strong>, activity cards, and access to <strong>online tutorials</strong>.
             </p>
-            <img src="logo_600.png" alt="Circubes Light Detector" width="100" />
-        </section>
-    </div>
-    <footer>&copy; 2025 Circubes. All rights reserved.</footer>
+        </div>
+    </section>
+
+    <!-- Educational Benefits -->
+    <section id="education" class="section-alt">
+        <div class="container">
+            <h2 class="section-heading">Educational Benefits</h2>
+            <p class="section-subheading">Comprehensive STEM learning that fits curriculum goals</p>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div class="benefit-text">Introduces foundational electronics concepts: <strong>current, polarity, and components</strong></div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div class="benefit-text">Promotes <strong>problem-solving, critical thinking</strong>, and system understanding</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div class="benefit-text">Aligns with <strong>Science, Physics, Technology</strong>, and Informatics curricula</div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div class="benefit-text">Perfect for <strong>STEM education from age 8+</strong></div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div class="benefit-text">Supports <strong>inclusive, non-verbal, hands-on learning</strong></div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">✅</div>
+                    <div class="benefit-text">Ideal for <strong>classrooms, project weeks, AGs</strong>, and home learning</div>
+                </div>
+            </div>
+            <img src="p3.png" alt="Circubes in Classroom" class="featured-image" style="max-width: 600px;" />
+        </div>
+    </section>
+
+    <!-- Who It's For -->
+    <section id="audience">
+        <div class="container">
+            <h2 class="section-heading">Who Is Circubes For?</h2>
+            <p class="section-subheading">Built for classrooms, living rooms, and makerspaces</p>
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <div class="audience-icon">🏫</div>
+                    <div class="audience-title">Schools</div>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">👨‍🏫</div>
+                    <div class="audience-title">Teachers & Educators</div>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">👨‍👩‍👧‍👦</div>
+                    <div class="audience-title">Homeschooling Families</div>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">🔧</div>
+                    <div class="audience-title">Makerspaces</div>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">🎓</div>
+                    <div class="audience-title">Universities</div>
+                </div>
+                <div class="audience-card">
+                    <div class="audience-icon">🔬</div>
+                    <div class="audience-title">STEM Programs</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section id="testimonials" class="section-alt">
+        <div class="container">
+            <h2 class="section-heading">What Educators Say</h2>
+            <div class="testimonial">
+                <p class="testimonial-text">
+                    "The Circubes guest lecture at Berlin International College was an incredible experience for our students. Many shared that it was unlike anything they had seen before, and they especially loved experimenting hands-on with the cubes to explore different concepts. The session connected directly to what they are studying, while also giving them a glimpse into the future of technology. We would be delighted to host Circubes again for our next intake."
+                </p>
+                <div class="testimonial-author">
+                    <div>
+                        <div class="testimonial-name">Alexandra Walch</div>
+                        <div class="testimonial-title">Project Coordinator at Berlin International College</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-card">
+                <h2 style="color: white; margin: 0 0 1rem 0;">Get in Touch</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Ready to bring Circubes to your classroom or home? Let's talk!</p>
+                <div class="contact-info">
+                    <div>📧 <a href="mailto:info@eitan-meir.de">info@eitan-meir.de</a></div>
+                    <div>🌐 <a href="http://www.circubes.com" target="_blank">www.circubes.com</a></div>
+                    <div>📍 Berlin, Germany</div>
+                    <div>🏢 Eitan & Meir GmbH</div>
+                </div>
+                <div class="cta-buttons" style="margin-top: 2rem;">
+                    <a href="mailto:info@eitan-meir.de" class="btn btn-primary">📩 Contact Us</a>
+                    <a href="mailto:info@eitan-meir.de?subject=Bulk%20Order%20for%20Schools" class="btn btn-secondary">🏫 Bulk Orders for Schools</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <img src="logo_600.png" alt="Circubes Logo" class="footer-logo" />
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#features">Features</a>
+                <a href="#kit">The Kit</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Circubes by Eitan & Meir GmbH. All rights reserved.</p>
+                <p>Designed for learners, educators, and makers worldwide.</p>
+            </div>
+        </div>
+    </footer>
 
     <script type="module">
   // Import the functions you need from the SDKs you need
