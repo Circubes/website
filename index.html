@@ -566,16 +566,40 @@
         .testimonial-card { background: #ffffff; border: 1px solid #e4ebf3; border-radius: 22px; padding: 2.25rem 2rem 2.4rem; position: relative; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 1.2rem; transition: var(--transition); }
         .testimonial-card::before { content: "\201C"; position: absolute; top: 0.3rem; left: 0.9rem; font-size: 5rem; line-height: 1; color: rgba(6,147,227,0.15); font-family: serif; pointer-events: none; }
         .testimonial-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
-        .testimonial-card blockquote { margin: 0; font-size: 1.05rem; line-height: 1.65; color: #2b2d42; font-style: italic; position: relative; }
-        .testimonial-card footer { margin: 0; font-size: 0.8rem; letter-spacing: 0.5px; text-transform: uppercase; color: #556; font-weight: 500; display: flex; flex-direction: column; gap: 0.35rem; }
+    .testimonial-card blockquote { margin: 0; font-size: 1.05rem; line-height: 1.65; color: #2b2d42; font-style: italic; position: relative; }
+    /* Replacing footer element usage with a class-based wrapper */
+    .testimonial-card .testimonial-meta { margin: 0; font-size: 0.8rem; letter-spacing: 0.5px; text-transform: uppercase; color: #556; font-weight: 500; display: flex; flex-direction: column; gap: 0.35rem; }
         .testimonial-author-name { font-size: 0.85rem; font-weight: 600; color: var(--color-dark); letter-spacing: 0.4px; }
         .testimonial-author-role { font-size: 0.7rem; color: #666; letter-spacing: 0.6px; }
     .testimonial-author-org { font-size: 0.65rem; color: #5a3d85; background: rgba(118,75,162,0.10); padding: 0.28rem 0.55rem 0.32rem; border-radius: 8px; display: inline-block; font-weight: 600; letter-spacing: 0.8px; box-shadow: 0 1px 2px rgba(118,75,162,0.15); }
     /* Slight hierarchy bump for educator name */
     .testimonial-card:first-child .testimonial-author-name { font-size: 0.95rem; }
-    .testimonial-card:first-child footer { gap: 0.4rem; }
+    .testimonial-card:first-child .testimonial-meta { gap: 0.4rem; }
         .testimonial-badge { align-self: flex-start; background: linear-gradient(135deg,var(--color-primary),#764ba2); color:#fff; padding:0.4rem 0.7rem; border-radius:14px; font-size:0.6rem; letter-spacing:0.8px; font-weight:500; }
         @media (max-width: 640px){ .testimonial-card { padding: 1.75rem 1.4rem 2rem; } .testimonial-card blockquote { font-size: 0.95rem; } }
+
+        /* Accessibility contrast adjustments for testimonial author details */
+        .testimonial-card .testimonial-meta .testimonial-author-name,
+        .testimonial-card .testimonial-meta .testimonial-author-role,
+        .testimonial-card .testimonial-meta .testimonial-author-org {
+            color: #1c1f24;
+        }
+        .testimonial-author-role {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #1c1f24 !important; /* ensure override of inline color */
+            letter-spacing: 0.7px;
+        }
+        .testimonial-author-org {
+            color: #2b2d42; /* darker for higher contrast */
+            background: linear-gradient(135deg, rgba(118,75,162,0.35), rgba(6,147,227,0.35));
+            padding: 0.3rem 0.6rem 0.35rem;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.9px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+        }
 
         /* Contact Section */
         .contact-card {
@@ -1242,31 +1266,31 @@
                     <blockquote id="t1">
                         "The Circubes guest lecture at Berlin International College was an incredible experience for our students. Many shared that it was unlike anything they had seen before, and they especially loved experimenting hands-on with the cubes to explore different concepts. The session connected directly to what they are studying, while also giving them a glimpse into the future of technology. We would be delighted to host Circubes again for our next intake."
                     </blockquote>
-                    <footer>
+                    <div class="testimonial-meta">
                         <span class="testimonial-author-name">Alexandra Walch</span>
                         <span class="testimonial-author-role" style="text-transform:uppercase; letter-spacing:0.9px; font-weight:600; color:#444;">Project Coordinator</span>
                         <span class="testimonial-author-org" aria-label="Institution">Berlin International College</span>
-                    </footer>
+                    </div>
                 </div>
                 <div class="testimonial-card" aria-labelledby="t2">
                     <span class="testimonial-badge">STUDENT</span>
                     <blockquote id="t2">
                         "Seeing real components click together helped me finally understand how a circuit flows. It turned theory into something I could touch and rearrange."
                     </blockquote>
-                    <footer>
+                    <div class="testimonial-meta">
                         <span class="testimonial-author-name">Student Participant</span>
                         <span class="testimonial-author-role">Intro to Engineering Workshop</span>
-                    </footer>
+                    </div>
                 </div>
                 <div class="testimonial-card" aria-labelledby="t3">
                     <span class="testimonial-badge">PROGRAM DIRECTOR</span>
                     <blockquote id="t3">
                         "Circubes lowers the barrier for interdisciplinary STEM activities—we can prototype lessons without spending days on soldering or wiring prep."
                     </blockquote>
-                    <footer>
+                    <div class="testimonial-meta">
                         <span class="testimonial-author-name">STEM Program Director</span>
                         <span class="testimonial-author-role">After-School Innovation Lab</span>
-                    </footer>
+                    </div>
                 </div>
             </div>
         </div>
