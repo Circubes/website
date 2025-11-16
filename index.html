@@ -309,6 +309,129 @@
             color: var(--color-dark);
         }
 
+        .kit-item img {
+            width: 90px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            display: block;
+            margin: 0 auto 0.5rem;
+        }
+
+        /* Component Gallery */
+        .component-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.25rem;
+            margin-top: 2rem;
+        }
+
+        .component-card {
+            background: var(--color-white);
+            border: 1px solid #eee;
+            border-radius: 14px;
+            padding: 1rem 0.75rem 1.25rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .component-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .component-card img {
+            width: 100%;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 0.6rem;
+        }
+
+        .component-card h4 {
+            margin: 0 0 0.35rem 0;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
+
+        .component-card p {
+            margin: 0;
+            font-size: 0.75rem;
+            line-height: 1.3;
+            color: #555;
+        }
+        .component-tags {
+            margin: 0.35rem 0 0;
+            font-size: 0.65rem;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: #888;
+            font-weight: 500;
+        }
+        .taxonomy-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.2rem;
+            justify-content: center;
+            margin: 1.5rem auto 0;
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+            color: #777;
+            max-width: 800px;
+        }
+        .taxonomy-legend span {
+            background: #f1f3f5;
+            padding: 0.35rem 0.6rem;
+            border-radius: 20px;
+            border: 1px solid #e3e7ea;
+            font-weight: 500;
+        }
+
+        /* Sample Builds Gallery */
+        .builds-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .builds-gallery figure {
+            margin: 0;
+            background: var(--color-white);
+            border-radius: 18px;
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .builds-gallery img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .builds-gallery figcaption {
+            padding: 0.9rem 1rem 1rem;
+            font-size: 0.85rem;
+            color: #444;
+            line-height: 1.4;
+        }
+
+        .lazy-blur {
+            filter: blur(8px);
+            transition: filter 0.6s ease;
+        }
+        .lazy-loaded {
+            filter: blur(0);
+        }
+
         /* Benefits List */
         .benefits-list {
             display: grid;
@@ -597,62 +720,62 @@
             <p class="section-subheading">12 modular cubes with real electronic components</p>
             <div class="kit-grid">
                 <div class="kit-item">
-                    <div class="kit-item-icon">🔋</div>
+                    <img src="img/battery.jpg" loading="lazy" alt="Battery Cube providing 3V power for circuits">
                     <div class="kit-item-name">Battery Cube</div>
-                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">3V Power</p>
+                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">3V Power Source</p>
                 </div>
                 <div class="kit-item">
-                    <div class="kit-item-icon">💡</div>
+                    <img src="img/led.jpg" loading="lazy" alt="LED Cube showing light emission component">
                     <div class="kit-item-name">LED Cube</div>
                     <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Light Emitter</p>
                 </div>
                 <div class="kit-item">
-                    <div class="kit-item-icon">🔄</div>
+                    <img src="img/motor.jpg" loading="lazy" alt="Motor Cube for motion and rotational experiments">
                     <div class="kit-item-name">Motor Cube</div>
                     <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Rotation Power</p>
                 </div>
                 <div class="kit-item">
-                    <div class="kit-item-icon">🔌</div>
+                    <img src="img/transistor.jpg" loading="lazy" alt="Transistor Cube enabling switching and amplification logic">
                     <div class="kit-item-name">Transistor Cube</div>
                     <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Electronic Switch</p>
                 </div>
                 <div class="kit-item">
-                    <div class="kit-item-icon">🎵</div>
+                    <img src="img/melody.jpg" loading="lazy" alt="Melody chip cube producing musical tones">
                     <div class="kit-item-name">Melody Chip Cube</div>
                     <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Musical Output</p>
                 </div>
                 <div class="kit-item">
-                    <div class="kit-item-icon">🔘</div>
+                    <img src="img/switch.jpg" loading="lazy" alt="Switch cube for simple on/off control of circuits">
                     <div class="kit-item-name">Switch Cube</div>
                     <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">On/Off Control</p>
                 </div>
                 <div class="kit-item">
-                    <div class="kit-item-icon">⏺️</div>
+                    <img src="img/button.jpg" loading="lazy" alt="Button cube acting as a momentary input device">
                     <div class="kit-item-name">Button Cube</div>
                     <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Press Input</p>
                 </div>
                 <div class="kit-item">
-                    <div class="kit-item-icon">☀️</div>
+                    <img src="img/photoresistor.jpg" loading="lazy" alt="Photoresistor cube detecting ambient light for sensor projects">
                     <div class="kit-item-name">Photoresistor Cube</div>
                     <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Light Sensor</p>
                 </div>
                 <div class="kit-item">
-                    <div class="kit-item-icon">🎚️</div>
+                    <img src="img/potentiometer.jpg" loading="lazy" alt="Potentiometer cube offering variable resistance control">
                     <div class="kit-item-name">Potentiometer Cube</div>
                     <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Variable Resistor</p>
                 </div>
                 <div class="kit-item">
-                    <div class="kit-item-icon">⚡</div>
+                    <img src="img/resistor.jpg" loading="lazy" alt="Resistor cube fixed 1k ohm component">
                     <div class="kit-item-name">Resistor Cube</div>
-                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">1kΩ</p>
+                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">1kΩ Fixed</p>
                 </div>
                 <div class="kit-item">
-                    <div class="kit-item-icon">🔋</div>
+                    <img src="img/capacitor.jpg" loading="lazy" alt="Capacitor cube storing and releasing electrical charge 1000 microfarads">
                     <div class="kit-item-name">Capacitor Cube</div>
-                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">1000μF</p>
+                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">1000μF Storage</p>
                 </div>
                 <div class="kit-item">
-                    <div class="kit-item-icon">🔊</div>
+                    <img src="img/buzzer.jpg" loading="lazy" alt="Buzzer cube generating sound for audio signaling">
                     <div class="kit-item-name">Buzzer Cube</div>
                     <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Sound Output</p>
                 </div>
@@ -668,6 +791,114 @@
                     📖 Download User Manual (PDF)
                 </a>
                 <p style="color: #666; margin-top: 1rem; font-size: 0.95rem;">Get step-by-step instructions and 100+ experiments</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Component Gallery (Detailed View) -->
+    <section id="components" class="section-alt">
+        <div class="container">
+            <h2 class="section-heading">Explore the Components</h2>
+            <p class="section-subheading">High-quality, real electronic parts embedded in magnetic cubes for intuitive learning.</p>
+            <div class="taxonomy-legend" aria-label="Component functional categories">
+                <span>Storage</span>
+                <span>Control Flow</span>
+                <span>Input</span>
+                <span>Output</span>
+                <span>Signal</span>
+                <span>Control</span>
+            </div>
+            <div class="component-gallery-grid">
+                <div class="component-card">
+                    <img src="img/battery.jpg" loading="lazy" alt="Battery cube close-up showing polarity markings">
+                    <h4>Battery Cube</h4>
+                    <p>Provides a safe 3V supply for all beginner circuits. Polarity clearly marked.</p>
+                    <p class="component-tags">storage • long</p>
+                </div>
+                <div class="component-card">
+                    <img src="img/led.jpg" loading="lazy" alt="LED cube emitting light orange module">
+                    <h4>LED Cube</h4>
+                    <p>Visual feedback and instant success. Learn polarity and current direction.</p>
+                    <p class="component-tags">output • light</p>
+                </div>
+                <div class="component-card">
+                    <img src="img/motor.jpg" loading="lazy" alt="Motor cube with small DC motor visible">
+                    <h4>Motor Cube</h4>
+                    <p>Convert electrical energy to motion. Experiment with load and speed.</p>
+                    <p class="component-tags">output • motion</p>
+                </div>
+                <div class="component-card">
+                    <img src="img/transistor.jpg" loading="lazy" alt="Transistor cube detail of three-pin device">
+                    <h4>Transistor Cube</h4>
+                    <p>Introduce logic, amplification and control circuits without breadboards.</p>
+                    <p class="component-tags">control</p>
+                </div>
+                <div class="component-card">
+                    <img src="img/photoresistor.jpg" loading="lazy" alt="Photoresistor cube sensing ambient light">
+                    <h4>Photoresistor Cube</h4>
+                    <p>Build automatic night lights and light-following systems.</p>
+                    <p class="component-tags">control flow • light</p>
+                </div>
+                <div class="component-card">
+                    <img src="img/potentiometer.jpg" loading="lazy" alt="Potentiometer cube knob interface for variable resistance">
+                    <h4>Potentiometer Cube</h4>
+                    <p>Adjust brightness, speed, pitch and more with analog control.</p>
+                    <p class="component-tags">control flow • adjustable</p>
+                </div>
+                <div class="component-card">
+                    <img src="img/capacitor.jpg" loading="lazy" alt="Capacitor cube with large electrolytic capacitor">
+                    <h4>Capacitor Cube</h4>
+                    <p>Store and release energy. Explore timing and smoothing concepts.</p>
+                    <p class="component-tags">storage • short</p>
+                </div>
+                <div class="component-card">
+                    <img src="img/buzzer.jpg" loading="lazy" alt="Buzzer cube sound output device">
+                    <h4>Buzzer Cube</h4>
+                    <p>Introduce sound generation and alert systems with simple circuits.</p>
+                    <p class="component-tags">output • sound</p>
+                </div>
+                <div class="component-card">
+                    <img src="img/melody.jpg" loading="lazy" alt="Melody chip cube playing tune module">
+                    <h4>Melody Chip Cube</h4>
+                    <p>Music and patterns: learn sequencing and signal triggering.</p>
+                    <p class="component-tags">signal</p>
+                </div>
+                <div class="component-card">
+                    <img src="img/button.jpg" loading="lazy" alt="Button cube tactile momentary push button">
+                    <h4>Button Cube</h4>
+                    <p>Inputs for interactive projects. Debounce concepts made tangible.</p>
+                    <p class="component-tags">input • momentary</p>
+                </div>
+                <div class="component-card">
+                    <img src="img/switch.jpg" loading="lazy" alt="Switch cube showing lever mechanism">
+                    <h4>Switch Cube</h4>
+                    <p>Introduce binary logic and control of power flow effortlessly.</p>
+                    <p class="component-tags">input • latching</p>
+                </div>
+                <div class="component-card">
+                    <img src="img/resistor.jpg" loading="lazy" alt="Resistor cube fixed resistance value labeling">
+                    <h4>Resistor Cube</h4>
+                    <p>Understand current limiting and protection for sensitive parts.</p>
+                    <p class="component-tags">control flow • fixed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Builds Gallery -->
+    <section id="builds">
+        <div class="container">
+            <h2 class="section-heading">Sample Builds & Projects</h2>
+            <p class="section-subheading">A glimpse of what learners create in minutes—expandable into complex systems.</p>
+            <div class="builds-gallery">
+                <figure>
+                    <img src="img/sample-1.jpg" loading="lazy" alt="Sample Circubes build showing a light sensor controlling a buzzer" class="lazy-blur" />
+                    <figcaption>Light-reactive circuit combining photoresistor, transistor and LED logic.</figcaption>
+                </figure>
+                <figure>
+                    <img src="img/sample-2.jpg" loading="lazy" alt="Motor and LED combo build demonstrating energy conversion" class="lazy-blur" />
+                    <figcaption>Energy conversion demo: Battery drives motor while LED indicates power state.</figcaption>
+                </figure>
             </div>
         </div>
     </section>
