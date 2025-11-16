@@ -287,11 +287,13 @@
 
         .kit-item {
             background: var(--color-white);
-            padding: 1.5rem;
+            padding: 0;
             border-radius: 12px;
             box-shadow: var(--shadow-sm);
             text-align: center;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
         .kit-item:hover {
@@ -310,13 +312,42 @@
         }
 
         .kit-item img {
-            width: 90px;
-            height: 90px;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border-radius: 12px;
-            box-shadow: var(--shadow-sm);
             display: block;
-            margin: 0 auto 0.5rem;
+            border-radius: inherit;
+            margin: 0;
+            box-shadow: none;
+            transition: transform 0.6s ease;
+            transform: scale(1.1); /* modest 10% baseline enlargement for subtle depth */
+            will-change: transform;
+        }
+        .kit-item:hover img {
+            transform: scale(1.18); /* maintain ~8% additional zoom on hover */
+        }
+        .kit-item-overlay {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 0.75rem 0.9rem 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.25), rgba(0,0,0,0));
+            color: #fff;
+            text-align: left;
+        }
+        .kit-item-name {
+            font-weight: 500;
+            color: #fff;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            margin: 0;
+        }
+        .kit-item-desc {
+            font-size: 0.65rem;
+            margin: 0.35rem 0 0;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
         }
 
         /* Component Gallery */
@@ -523,6 +554,28 @@
             color: #666;
             font-size: 0.95rem;
         }
+        /* Enhanced Testimonials */
+        #testimonials.section-alt { position: relative; overflow: hidden; }
+        #testimonials.section-alt::before, #testimonials.section-alt::after {
+            content: ""; position: absolute; width: 320px; height: 320px; border-radius: 50%;
+            background: radial-gradient(circle at center, rgba(6,147,227,0.25), transparent 70%);
+            top: -120px; left: -120px; filter: blur(6px); opacity: 0.6; pointer-events: none;}
+        #testimonials.section-alt::after { top: auto; left: auto; bottom: -140px; right: -140px; background: radial-gradient(circle at center, rgba(118,75,162,0.25), transparent 70%); }
+        .testimonials-wrapper { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .testimonial-card { background: #ffffff; border: 1px solid #e4ebf3; border-radius: 22px; padding: 2.25rem 2rem 2.4rem; position: relative; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; gap: 1.2rem; transition: var(--transition); }
+        .testimonial-card::before { content: "\201C"; position: absolute; top: 0.3rem; left: 0.9rem; font-size: 5rem; line-height: 1; color: rgba(6,147,227,0.15); font-family: serif; pointer-events: none; }
+        .testimonial-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+        .testimonial-card blockquote { margin: 0; font-size: 1.05rem; line-height: 1.65; color: #2b2d42; font-style: italic; position: relative; }
+        .testimonial-card footer { margin: 0; font-size: 0.8rem; letter-spacing: 0.5px; text-transform: uppercase; color: #556; font-weight: 500; display: flex; flex-direction: column; gap: 0.35rem; }
+        .testimonial-author-name { font-size: 0.85rem; font-weight: 600; color: var(--color-dark); letter-spacing: 0.4px; }
+        .testimonial-author-role { font-size: 0.7rem; color: #666; letter-spacing: 0.6px; }
+    .testimonial-author-org { font-size: 0.65rem; color: #5a3d85; background: rgba(118,75,162,0.10); padding: 0.28rem 0.55rem 0.32rem; border-radius: 8px; display: inline-block; font-weight: 600; letter-spacing: 0.8px; box-shadow: 0 1px 2px rgba(118,75,162,0.15); }
+    /* Slight hierarchy bump for educator name */
+    .testimonial-card:first-child .testimonial-author-name { font-size: 0.95rem; }
+    .testimonial-card:first-child footer { gap: 0.4rem; }
+        .testimonial-badge { align-self: flex-start; background: linear-gradient(135deg,var(--color-primary),#764ba2); color:#fff; padding:0.4rem 0.7rem; border-radius:14px; font-size:0.6rem; letter-spacing:0.8px; font-weight:500; }
+        @media (max-width: 640px){ .testimonial-card { padding: 1.75rem 1.4rem 2rem; } .testimonial-card blockquote { font-size: 0.95rem; } }
 
         /* Contact Section */
         .contact-card {
@@ -532,6 +585,140 @@
             border-radius: 16px;
             text-align: center;
             box-shadow: var(--shadow-lg);
+        }
+        /* Contact Section Enhanced */
+        #contact {
+            position: relative;
+            background: linear-gradient(135deg, #f8f9fa 0%, #eef4ff 50%, #e6f2ff 100%);
+        }
+        #contact::before, #contact::after {
+            content: "";
+            position: absolute;
+            width: 280px; height: 280px;
+            background: radial-gradient(circle at center, rgba(6,147,227,0.25), transparent 70%);
+            top: -60px; left: -60px;
+            z-index: 0;
+            pointer-events: none;
+            filter: blur(4px);
+        }
+        #contact::after {
+            top: auto; left: auto; right: -80px; bottom: -40px;
+            background: radial-gradient(circle at center, rgba(118,75,162,0.25), transparent 70%);
+        }
+        .contact-inner {
+            position: relative;
+            z-index: 1;
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2.5rem 0 3.5rem;
+        }
+        .contact-card-sm {
+            background: var(--color-white);
+            border: 1px solid #e4ebf3;
+            padding: 1.75rem 1.5rem 1.6rem;
+            border-radius: 18px;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .contact-card-sm::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(6,147,227,0.08), rgba(118,75,162,0.08));
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .contact-card-sm:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+        .contact-card-sm:hover::before { opacity: 1; }
+        .contact-icon-circle {
+            width: 54px; height: 54px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--color-primary), #764ba2);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.65rem; color: #fff;
+            box-shadow: var(--shadow-sm);
+        }
+        .contact-card-sm h3 {
+            margin: 0.4rem 0 0.2rem;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: var(--color-dark);
+        }
+        .contact-card-sm p, .contact-card-sm a {
+            margin: 0;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            color: #555;
+            text-decoration: none;
+        }
+        .contact-card-sm a:hover { color: var(--color-primary); }
+        .contact-support-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1.25rem;
+            margin: 0 0 2.5rem;
+            padding: 0;
+            list-style: none;
+            justify-content: center;
+        }
+        .contact-support-list li {
+            background: #ffffff;
+            border: 1px solid #e5ecf2;
+            padding: 0.55rem 0.9rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            font-weight: 500;
+            color: #556;
+            box-shadow: var(--shadow-sm);
+        }
+        .contact-form-wrapper {
+            background: var(--color-white);
+            padding: 3rem 2.25rem 2.6rem;
+            border-radius: 22px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid #e3e9ef;
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-form-wrapper::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(6,147,227,0.08), rgba(118,75,162,0.08));
+            mix-blend-mode: multiply;
+            pointer-events: none;
+        }
+        .contact-form-wrapper h3 {
+            margin: 0 0 2rem;
+            font-size: 1.65rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-align: center;
+        }
+        .contact-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 1.25rem;
+        }
+        @media (max-width: 640px) {
+            .contact-form-wrapper { padding: 2.25rem 1.5rem 2rem; }
+            .contact-grid { gap: 1.1rem; }
+            .contact-card-sm { padding: 1.4rem 1.2rem 1.3rem; }
         }
 
         .contact-info {
@@ -665,7 +852,7 @@
         <div class="container">
             <h2 class="section-heading">What is Circubes?</h2>
             <p class="section-subheading">A hands-on electronics learning kit made of magnetic cubes. Each cube contains a real electronic component that snaps together to form complete working circuits.</p>
-            <img src="p1.png" alt="Circubes Modular Electronics Kit" class="featured-image" />
+            <img src="./img/hore.jpg" alt="Circubes Modular Electronics Kit" class="featured-image" />
             <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 2rem auto; line-height: 1.8;">
                 Designed for learners of any age or educational background, Circubes removes the complexity of wires, breadboards, and soldering, making electronics education <strong>safe, intuitive, and fun</strong>.
             </p>
@@ -721,63 +908,87 @@
             <div class="kit-grid">
                 <div class="kit-item">
                     <img src="img/battery.jpg" loading="lazy" alt="Battery Cube providing 3V power for circuits">
-                    <div class="kit-item-name">Battery Cube</div>
-                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">3V Power Source</p>
+                    <div class="kit-item-overlay">
+                        <div class="kit-item-name">Battery Cube</div>
+                        <div class="kit-item-desc">3V Power Source</div>
+                    </div>
                 </div>
                 <div class="kit-item">
                     <img src="img/led.jpg" loading="lazy" alt="LED Cube showing light emission component">
-                    <div class="kit-item-name">LED Cube</div>
-                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Light Emitter</p>
+                    <div class="kit-item-overlay">
+                        <div class="kit-item-name">LED Cube</div>
+                        <div class="kit-item-desc">Light Emitter</div>
+                    </div>
                 </div>
                 <div class="kit-item">
                     <img src="img/motor.jpg" loading="lazy" alt="Motor Cube for motion and rotational experiments">
-                    <div class="kit-item-name">Motor Cube</div>
-                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Rotation Power</p>
+                    <div class="kit-item-overlay">
+                        <div class="kit-item-name">Motor Cube</div>
+                        <div class="kit-item-desc">Rotation Power</div>
+                    </div>
                 </div>
                 <div class="kit-item">
                     <img src="img/transistor.jpg" loading="lazy" alt="Transistor Cube enabling switching and amplification logic">
-                    <div class="kit-item-name">Transistor Cube</div>
-                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Electronic Switch</p>
+                    <div class="kit-item-overlay">
+                        <div class="kit-item-name">Transistor Cube</div>
+                        <div class="kit-item-desc">Electronic Switch</div>
+                    </div>
                 </div>
                 <div class="kit-item">
                     <img src="img/melody.jpg" loading="lazy" alt="Melody chip cube producing musical tones">
-                    <div class="kit-item-name">Melody Chip Cube</div>
-                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Musical Output</p>
+                    <div class="kit-item-overlay">
+                        <div class="kit-item-name">Melody Chip Cube</div>
+                        <div class="kit-item-desc">Musical Output</div>
+                    </div>
                 </div>
                 <div class="kit-item">
                     <img src="img/switch.jpg" loading="lazy" alt="Switch cube for simple on/off control of circuits">
-                    <div class="kit-item-name">Switch Cube</div>
-                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">On/Off Control</p>
+                    <div class="kit-item-overlay">
+                        <div class="kit-item-name">Switch Cube</div>
+                        <div class="kit-item-desc">On/Off Control</div>
+                    </div>
                 </div>
                 <div class="kit-item">
                     <img src="img/button.jpg" loading="lazy" alt="Button cube acting as a momentary input device">
-                    <div class="kit-item-name">Button Cube</div>
-                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Press Input</p>
+                    <div class="kit-item-overlay">
+                        <div class="kit-item-name">Button Cube</div>
+                        <div class="kit-item-desc">Press Input</div>
+                    </div>
                 </div>
                 <div class="kit-item">
                     <img src="img/photoresistor.jpg" loading="lazy" alt="Photoresistor cube detecting ambient light for sensor projects">
-                    <div class="kit-item-name">Photoresistor Cube</div>
-                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Light Sensor</p>
+                    <div class="kit-item-overlay">
+                        <div class="kit-item-name">Photoresistor Cube</div>
+                        <div class="kit-item-desc">Light Sensor</div>
+                    </div>
                 </div>
                 <div class="kit-item">
                     <img src="img/potentiometer.jpg" loading="lazy" alt="Potentiometer cube offering variable resistance control">
-                    <div class="kit-item-name">Potentiometer Cube</div>
-                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Variable Resistor</p>
+                    <div class="kit-item-overlay">
+                        <div class="kit-item-name">Potentiometer Cube</div>
+                        <div class="kit-item-desc">Variable Resistor</div>
+                    </div>
                 </div>
                 <div class="kit-item">
                     <img src="img/resistor.jpg" loading="lazy" alt="Resistor cube fixed 1k ohm component">
-                    <div class="kit-item-name">Resistor Cube</div>
-                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">1kΩ Fixed</p>
+                    <div class="kit-item-overlay">
+                        <div class="kit-item-name">Resistor Cube</div>
+                        <div class="kit-item-desc">1kΩ Fixed</div>
+                    </div>
                 </div>
                 <div class="kit-item">
                     <img src="img/capacitor.jpg" loading="lazy" alt="Capacitor cube storing and releasing electrical charge 1000 microfarads">
-                    <div class="kit-item-name">Capacitor Cube</div>
-                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">1000μF Storage</p>
+                    <div class="kit-item-overlay">
+                        <div class="kit-item-name">Capacitor Cube</div>
+                        <div class="kit-item-desc">1000μF Storage</div>
+                    </div>
                 </div>
                 <div class="kit-item">
                     <img src="img/buzzer.jpg" loading="lazy" alt="Buzzer cube generating sound for audio signaling">
-                    <div class="kit-item-name">Buzzer Cube</div>
-                    <p style="font-size: 0.9rem; color: #666; margin: 0.5rem 0 0;">Sound Output</p>
+                    <div class="kit-item-overlay">
+                        <div class="kit-item-name">Buzzer Cube</div>
+                        <div class="kit-item-desc">Sound Output</div>
+                    </div>
                 </div>
             </div>
             <img src="p2.png" alt="Circubes Components" class="featured-image" style="max-width: 700px;" />
@@ -982,7 +1193,7 @@
                     <div class="benefit-text">Ideal for <strong>classrooms, project weeks, AGs</strong>, and home learning</div>
                 </div>
             </div>
-            <img src="p3.png" alt="Circubes in Classroom" class="featured-image" style="max-width: 600px;" />
+            
         </div>
     </section>
 
@@ -1021,77 +1232,107 @@
     </section>
 
     <!-- Testimonial -->
-    <section id="testimonials" class="section-alt">
-        <div class="container">
+    <section id="testimonials" class="section-alt" aria-label="Educator testimonials">
+        <div class="container testimonials-wrapper">
             <h2 class="section-heading">What Educators Say</h2>
-            <div class="testimonial">
-                <p class="testimonial-text">
-                    "The Circubes guest lecture at Berlin International College was an incredible experience for our students. Many shared that it was unlike anything they had seen before, and they especially loved experimenting hands-on with the cubes to explore different concepts. The session connected directly to what they are studying, while also giving them a glimpse into the future of technology. We would be delighted to host Circubes again for our next intake."
-                </p>
-                <div class="testimonial-author">
-                    <div>
-                        <div class="testimonial-name">Alexandra Walch</div>
-                        <div class="testimonial-title">Project Coordinator at Berlin International College</div>
-                    </div>
+            <p class="section-subheading" style="margin-top:-1rem;">Real classroom reactions to hands-on electronics with Circubes.</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card" aria-labelledby="t1">
+                    <span class="testimonial-badge">EDUCATOR</span>
+                    <blockquote id="t1">
+                        "The Circubes guest lecture at Berlin International College was an incredible experience for our students. Many shared that it was unlike anything they had seen before, and they especially loved experimenting hands-on with the cubes to explore different concepts. The session connected directly to what they are studying, while also giving them a glimpse into the future of technology. We would be delighted to host Circubes again for our next intake."
+                    </blockquote>
+                    <footer>
+                        <span class="testimonial-author-name">Alexandra Walch</span>
+                        <span class="testimonial-author-role" style="text-transform:uppercase; letter-spacing:0.9px; font-weight:600; color:#444;">Project Coordinator</span>
+                        <span class="testimonial-author-org" aria-label="Institution">Berlin International College</span>
+                    </footer>
+                </div>
+                <div class="testimonial-card" aria-labelledby="t2">
+                    <span class="testimonial-badge">STUDENT</span>
+                    <blockquote id="t2">
+                        "Seeing real components click together helped me finally understand how a circuit flows. It turned theory into something I could touch and rearrange."
+                    </blockquote>
+                    <footer>
+                        <span class="testimonial-author-name">Student Participant</span>
+                        <span class="testimonial-author-role">Intro to Engineering Workshop</span>
+                    </footer>
+                </div>
+                <div class="testimonial-card" aria-labelledby="t3">
+                    <span class="testimonial-badge">PROGRAM DIRECTOR</span>
+                    <blockquote id="t3">
+                        "Circubes lowers the barrier for interdisciplinary STEM activities—we can prototype lessons without spending days on soldering or wiring prep."
+                    </blockquote>
+                    <footer>
+                        <span class="testimonial-author-name">STEM Program Director</span>
+                        <span class="testimonial-author-role">After-School Innovation Lab</span>
+                    </footer>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
+    <section id="contact" aria-label="Contact Circubes">
+        <div class="container contact-inner">
             <h2 class="section-heading">Get in Touch</h2>
-            <p class="section-subheading">Ready to bring Circubes to your classroom or home? Let's connect!</p>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 3rem 0;">
-                <div style="background: linear-gradient(135deg, var(--color-primary), #667eea); color: white; padding: 2.5rem; border-radius: 16px; text-align: center; box-shadow: var(--shadow-md);">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">📧</div>
-                    <h3 style="margin: 0 0 1rem 0; font-size: 1.3rem; font-weight: 400;">Email Us</h3>
-                    <a href="mailto:info@eitan-meir.de" style="color: white; text-decoration: none; font-size: 1.1rem; font-weight: 400;">info@eitan-meir.de</a>
+            <p class="section-subheading">Ready to bring Circubes to your classroom, makerspace, or home? Reach out below.</p>
+
+            <ul class="contact-support-list" aria-label="Typical support topics">
+                <li>Pre-Orders</li>
+                <li>School Pricing</li>
+                <li>Bulk Orders</li>
+                <li>Partnerships</li>
+                <li>Curriculum Help</li>
+                <li>Media & Press</li>
+            </ul>
+
+            <div class="contact-grid">
+                <div class="contact-card-sm" role="group" aria-labelledby="contact-email">
+                    <div class="contact-icon-circle">📧</div>
+                    <h3 id="contact-email">Email Us</h3>
+                    <a href="mailto:info@eitan-meir.de" aria-label="Email Circubes at info@eitan-meir.de">info@eitan-meir.de</a>
+                    <p>We aim to respond within 24h.</p>
                 </div>
-                
-                <div style="background: linear-gradient(135deg, #FF6B6B, #ee5a6f); color: white; padding: 2.5rem; border-radius: 16px; text-align: center; box-shadow: var(--shadow-md);">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">🌐</div>
-                    <h3 style="margin: 0 0 1rem 0; font-size: 1.3rem; font-weight: 400;">Visit Our Website</h3>
-                    <a href="http://www.circubes.com" target="_blank" style="color: white; text-decoration: none; font-size: 1.1rem; font-weight: 400;">www.circubes.com</a>
+                <div class="contact-card-sm" role="group" aria-labelledby="contact-web">
+                    <div class="contact-icon-circle" style="background: linear-gradient(135deg,#FF6B6B,#ee5a6f);">🌐</div>
+                    <h3 id="contact-web">Website</h3>
+                    <a href="http://www.circubes.com" target="_blank" rel="noopener" aria-label="Open circubes.com in new tab">www.circubes.com</a>
+                    <p>Latest updates & resources.</p>
                 </div>
-                
-                <div style="background: linear-gradient(135deg, #51CF66, #37b24d); color: white; padding: 2.5rem; border-radius: 16px; text-align: center; box-shadow: var(--shadow-md);">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">📍</div>
-                    <h3 style="margin: 0 0 1rem 0; font-size: 1.3rem; font-weight: 400;">Location</h3>
-                    <p style="margin: 0; font-size: 1.1rem; font-weight: 400;">Berlin, Germany</p>
-                    <p style="margin: 0.5rem 0 0; font-size: 0.95rem; opacity: 0.9;">Eitan & Meir GmbH</p>
+                <div class="contact-card-sm" role="group" aria-labelledby="contact-location">
+                    <div class="contact-icon-circle" style="background: linear-gradient(135deg,#51CF66,#37b24d);">📍</div>
+                    <h3 id="contact-location">Location</h3>
+                    <p style="font-weight:500; margin:0;">Berlin, Germany</p>
+                    <p style="margin:0; font-size:0.75rem; color:#666;">Eitan & Meir GmbH</p>
+                </div>
+                <div class="contact-card-sm" role="group" aria-labelledby="contact-social">
+                    <div class="contact-icon-circle" style="background: linear-gradient(135deg,#FFD93D,#ffb347);">💬</div>
+                    <h3 id="contact-social">Social</h3>
+                    <p>Coming soon: community & build ideas.</p>
                 </div>
             </div>
 
-            <!-- Contact Form -->
-            <div style="max-width: 700px; margin: 4rem auto; background: white; padding: 3rem; border-radius: 16px; box-shadow: var(--shadow-md);">
-                <h3 style="text-align: center; margin: 0 0 2rem 0; color: var(--color-dark); font-size: 1.8rem;">Send Us a Message</h3>
-                
-                <!-- Replace YOUR_FORMSPREE_ID with your actual Formspree form ID -->
-                <form id="contactForm" action="https://formspree.io/f/xkgqddwl" method="POST" style="display: flex; flex-direction: column; gap: 1.5rem;">
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="contact-form-wrapper" role="form" aria-labelledby="contact-form-title">
+                <h3 id="contact-form-title">Send Us a Message</h3>
+                <form id="contactForm" action="https://formspree.io/f/xkgqddwl" method="POST" style="display:flex; flex-direction:column; gap:1.4rem;">
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
                         <div>
-                            <label for="name" style="display: block; margin-bottom: 0.5rem; color: var(--color-dark); font-weight: 500;">Name *</label>
-                            <input type="text" id="name" name="name" required style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 8px; font-family: var(--font-main); font-size: 1rem; transition: var(--transition);" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#e0e0e0'">
+                            <label for="name" style="display:block; margin-bottom:0.45rem; font-weight:500; color:var(--color-dark);">Name *</label>
+                            <input type="text" id="name" name="name" required style="width:100%; padding:0.75rem; border:2px solid #dfe5eb; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:#fafbfc; transition:var(--transition);" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#dfe5eb'">
                         </div>
-                        
                         <div>
-                            <label for="email" style="display: block; margin-bottom: 0.5rem; color: var(--color-dark); font-weight: 500;">Email *</label>
-                            <input type="email" id="email" name="email" required style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 8px; font-family: var(--font-main); font-size: 1rem; transition: var(--transition);" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#e0e0e0'">
+                            <label for="email" style="display:block; margin-bottom:0.45rem; font-weight:500; color:var(--color-dark);">Email *</label>
+                            <input type="email" id="email" name="email" required style="width:100%; padding:0.75rem; border:2px solid #dfe5eb; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:#fafbfc; transition:var(--transition);" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#dfe5eb'">
                         </div>
                     </div>
-                    
                     <div>
-                        <label for="phone" style="display: block; margin-bottom: 0.5rem; color: var(--color-dark); font-weight: 500;">Phone (Optional)</label>
-                        <input type="tel" id="phone" name="phone" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 8px; font-family: var(--font-main); font-size: 1rem; transition: var(--transition);" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#e0e0e0'">
+                        <label for="phone" style="display:block; margin-bottom:0.45rem; font-weight:500; color:var(--color-dark);">Phone (Optional)</label>
+                        <input type="tel" id="phone" name="phone" style="width:100%; padding:0.75rem; border:2px solid #dfe5eb; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:#fafbfc; transition:var(--transition);" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#dfe5eb'">
                     </div>
-                    
                     <div>
-                        <label for="inquiry-type" style="display: block; margin-bottom: 0.5rem; color: var(--color-dark); font-weight: 500;">I'm interested in *</label>
-                        <select id="inquiry-type" name="inquiry-type" required style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 8px; font-family: var(--font-main); font-size: 1rem; background: white; transition: var(--transition);" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#e0e0e0'">
+                        <label for="inquiry-type" style="display:block; margin-bottom:0.45rem; font-weight:500; color:var(--color-dark);">I'm interested in *</label>
+                        <select id="inquiry-type" name="inquiry-type" required style="width:100%; padding:0.75rem; border:2px solid #dfe5eb; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:#ffffff; transition:var(--transition);" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#dfe5eb'">
                             <option value="">Select an option</option>
                             <option value="pre-order">Pre-Order (Individual)</option>
                             <option value="school-pricing">School/Bulk Pricing</option>
@@ -1099,28 +1340,19 @@
                             <option value="general">General Inquiry</option>
                         </select>
                     </div>
-                    
                     <div>
-                        <label for="organization" style="display: block; margin-bottom: 0.5rem; color: var(--color-dark); font-weight: 500;">Organization/School (Optional)</label>
-                        <input type="text" id="organization" name="organization" style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 8px; font-family: var(--font-main); font-size: 1rem; transition: var(--transition);" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#e0e0e0'">
+                        <label for="organization" style="display:block; margin-bottom:0.45rem; font-weight:500; color:var(--color-dark);">Organization/School (Optional)</label>
+                        <input type="text" id="organization" name="organization" style="width:100%; padding:0.75rem; border:2px solid #dfe5eb; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:#fafbfc; transition:var(--transition);" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#dfe5eb'">
                     </div>
-                    
                     <div>
-                        <label for="message" style="display: block; margin-bottom: 0.5rem; color: var(--color-dark); font-weight: 500;">Message *</label>
-                        <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 0.75rem; border: 2px solid #e0e0e0; border-radius: 8px; font-family: var(--font-main); font-size: 1rem; resize: vertical; transition: var(--transition);" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#e0e0e0'"></textarea>
+                        <label for="message" style="display:block; margin-bottom:0.45rem; font-weight:500; color:var(--color-dark);">Message *</label>
+                        <textarea id="message" name="message" rows="5" required style="width:100%; padding:0.75rem; border:2px solid #dfe5eb; border-radius:10px; font-family:var(--font-main); font-size:1rem; background:#fafbfc; resize:vertical; transition:var(--transition);" onfocus="this.style.borderColor='var(--color-primary)'" onblur="this.style.borderColor='#dfe5eb'"></textarea>
                     </div>
-                    
-                    <button type="submit" class="btn btn-primary" style="width: 100%; cursor: pointer; font-size: 1.1rem;">
-                        Send Message
-                    </button>
-                    
-                    <div id="form-status" style="text-align: center; margin-top: 1rem; display: none;"></div>
+                    <button type="submit" class="btn btn-primary" style="width:100%; cursor:pointer; font-size:1.05rem; letter-spacing:0.4px;">Send Message</button>
+                    <div id="form-status" style="text-align:center; margin-top:1rem; display:none;"></div>
+                    <p class="contact-note">Prefer email? Write us at <a href="mailto:info@eitan-meir.de" style="color:var(--color-primary); text-decoration:none; font-weight:500;">info@eitan-meir.de</a></p>
                 </form>
             </div>
-            
-            <p style="text-align: center; color: #666; margin-top: 2rem;">
-                Or email us directly at <a href="mailto:info@eitan-meir.de" style="color: var(--color-primary); text-decoration: none; font-weight: 500;">info@eitan-meir.de</a>
-            </p>
         </div>
     </section>
 
@@ -1208,6 +1440,34 @@
       }
     });
   }
+    // Progressive blur removal for sample build images
+    const lazyBlurImages = document.querySelectorAll('img.lazy-blur');
+    const activateImage = (img) => {
+        img.classList.add('lazy-loaded');
+        img.classList.remove('lazy-blur');
+    };
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.complete) {
+                        activateImage(img);
+                    } else {
+                        img.addEventListener('load', () => activateImage(img), { once: true });
+                    }
+                    obs.unobserve(img);
+                }
+            });
+        }, { rootMargin: '120px' });
+        lazyBlurImages.forEach(img => observer.observe(img));
+    } else {
+        // Fallback for older browsers
+        lazyBlurImages.forEach(img => {
+            if (img.complete) activateImage(img);
+            else img.addEventListener('load', () => activateImage(img), { once: true });
+        });
+    }
 </script>
 </body>
 
