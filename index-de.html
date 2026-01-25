@@ -57,11 +57,72 @@
             "url": "https://www.circubes.com/index-de.html",
             "priceCurrency": "USD",
             "price": "99.00",
+            "priceValidUntil": "2026-12-31",
             "availability": "https://schema.org/InStock",
             "itemCondition": "https://schema.org/NewCondition",
             "seller": {
               "@id": "https://www.circubes.com/index-de.html#organization"
+            },
+            "shippingDetails": {
+              "@type": "OfferShippingDetails",
+              "shippingRate": {
+                "@type": "MonetaryAmount",
+                "value": "0",
+                "currency": "USD"
+              },
+              "shippingDestination": [
+                {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "DE"
+                },
+                {
+                  "@type": "DefinedRegion",
+                  "addressCountry": "EU"
+                }
+              ],
+              "deliveryTime": {
+                "@type": "ShippingDeliveryTime",
+                "handlingTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": "0",
+                  "maxValue": "2",
+                  "unitCode": "DAY"
+                },
+                "transitTime": {
+                  "@type": "QuantitativeValue",
+                  "minValue": "2",
+                  "maxValue": "5",
+                  "unitCode": "DAY"
+                }
+              }
+            },
+            "hasMerchantReturnPolicy": {
+              "@type": "MerchantReturnPolicy",
+              "applicableCountry": "DE",
+              "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnPeriod",
+              "merchantReturnDays": 30,
+              "returnMethod": "https://schema.org/ReturnByMail",
+              "returnFees": "https://schema.org/FreeReturn"
             }
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5",
+            "bestRating": "5",
+            "ratingCount": "3"
+          },
+          "review": {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Alexandra Walch"
+            },
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            },
+            "reviewBody": "Der Circubes-Gastvortrag am Berlin International College war ein unglaubliches Erlebnis für unsere Studenten. Viele sagten, es sei anders als alles, was sie zuvor gesehen hätten."
           },
           "category": "Lernspielzeug / Elektronik-Baukasten",
           "hasPart": [
