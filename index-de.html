@@ -1722,6 +1722,7 @@
                 <a href="#education">Education</a>
                 <a href="#contact">Contact</a>
                 <a href="u_manual_v2_en.pdf" download>Download Manual</a>
+                <a href="#" onclick="if(window.klaro){klaro.getManager().showSettings();} return false;">Cookie-Einstellungen</a>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Circubes by Eitan & Meir GmbH. All rights reserved.</p>
@@ -1730,29 +1731,14 @@
         </div>
     </footer>
 
-    <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyBNBEtOYZRJAmiLiCK-nIpiHN-g6RboDgg",
-    authDomain: "circubes-com.firebaseapp.com",
-    projectId: "circubes-com",
-    storageBucket: "circubes-com.firebasestorage.app",
-    messagingSenderId: "259395027197",
-    appId: "1:259395027197:web:1aa814117cbd31df367e94",
-    measurementId: "G-889BNYBK7F"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-
+    <script defer type="application/javascript" src="klaro-config.js"></script>
+    <script defer data-config="klaroConfig" type="application/javascript" src="https://cdn.kiprotect.com/klaro/v0.7/klaro.js"></script>
+    <script type="text/plain" data-type="application/javascript" data-name="firebase-analytics" data-src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script type="text/plain" data-type="application/javascript" data-name="firebase-analytics" data-src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"></script>
+    <script type="text/plain" data-type="application/javascript" data-name="firebase-analytics">
+(function(){var firebaseConfig={apiKey:"AIzaSyBNBEtOYZRJAmiLiCK-nIpiHN-g6RboDgg",authDomain:"circubes-com.firebaseapp.com",projectId:"circubes-com",storageBucket:"circubes-com.firebasestorage.app",messagingSenderId:"259395027197",appId:"1:259395027197:web:1aa814117cbd31df367e94",measurementId:"G-889BNYBK7F"};function init(){if(typeof firebase!=="undefined"&&firebase.app){firebase.initializeApp(firebaseConfig);firebase.analytics();}else{setTimeout(init,50);}}init();})();
+    </script>
+    <script>
   // Form submission handling
   const form = document.getElementById('contactForm');
   const formStatus = document.getElementById('form-status');
