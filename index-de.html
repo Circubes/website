@@ -282,6 +282,28 @@
             color: var(--color-primary);
         }
 
+        .lang-switcher {
+            display: inline-flex;
+            align-items: center;
+            margin-right: 1rem;
+            padding: 0.375rem 0.75rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            transition: border-color 0.2s, background 0.2s, color 0.2s;
+        }
+        .lang-switcher:hover {
+            border-color: #c4b5fd;
+            background: #f5f3ff;
+            color: #6d28d9;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -1119,7 +1141,7 @@
                 <a href="#audience">Zielgruppen</a>
                 <a href="#testimonials">Stimmen</a>
                 <a href="#contact">Kontakt</a>
-                <a href="index.html" hreflang="en" style="padding:0.4rem 0.7rem; border:1px solid rgba(0,0,0,0.15); border-radius:10px; font-size:0.7rem; letter-spacing:0.8px; text-transform:uppercase;">EN</a>
+                <a href="index.html" class="lang-switcher" hreflang="en" lang="en" title="English">EN</a>
             </div>
         </div>
     </nav>
