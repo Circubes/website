@@ -1125,6 +1125,7 @@
             }
         }
     </style>
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </head> 
 
 <body>
@@ -1153,8 +1154,12 @@
             <h1>Schaltungen bauen. Verständnis aufbauen.</h1>
             <p class="hero-tagline">Elektronik einfach, spannend und handfest</p>
             <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">🛒 Jetzt vorbestellen</a>
-                <a href="#about" class="btn btn-secondary">Mehr erfahren</a>
+                <stripe-buy-button
+                    buy-button-id="buy_btn_1U3aZBAJLxLrpm5q1j4MRkDb"
+                    publishable-key="pk_live_51SkRGAAJLxLrpm5qf7RqXzTUPRc53zvWkfSmdkyWSQ9QnMiZgFvE02sZ34ksSjhMv2gxTCOvYwGcNrn5qOR9tMCM00yjJifaCA"
+                >
+                </stripe-buy-button>
+                
             </div>
             <div class="hero-video">
                 <iframe src="https://www.youtube.com/embed/g3Nqts4KpuI?si=lPuFWD-bBHJeebii" title="Circubes Demo Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
